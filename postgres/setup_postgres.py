@@ -20,14 +20,14 @@ def create_postgres_engine(env_file: str = ".env") -> Engine:
 
     config: dict = dotenv_values(env_file)
 
-    url_object: str = URL.create(
+    url_object: URL = URL.create(
         "postgresql+psycopg",
         username=config["POSTGRES_USER"],
         password=config["POSTGRES_PASSWORD"],  # plain (unescaped) text
-        host=config["POSTGRES_HOST"],
-        port=config["POSTGRES_PORT"],
-        database=config["POSTGRES_DB"],
-        query={"options": f"-c search_path={config['POSTGRES_SCHEMA']}"},
+        host=config.get("POSTGRES_HOST", "postgres"),
+        port=config.get("POSTGRES_PORT", "5432"),
+        database=config.get("POSTGRES_DB", "postgres"),
+        query={"options": f"-c search_path={config.get('POSTGRES_SCHEMA', 'public')}"},
     )
 
     engine = create_engine(url_object)
