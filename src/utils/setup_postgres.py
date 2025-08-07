@@ -1,15 +1,19 @@
+from pathlib import Path
+
 from dotenv import dotenv_values
 from sqlalchemy import URL, create_engine
 from sqlalchemy.engine import Engine
 
 
-def create_postgres_engine(env_file: str = ".env") -> Engine:
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
+
+def create_postgres_engine(env_file: str = f"{BASE_DIR}/db/.env") -> Engine:
     """
     Create sqlalchemy.engine.Engine for PostgreSQL database.
 
     Parameters
     ----------
-    env_file : str, default ".env"
+    env_file : str, default f"{BASE_DIR}/db/.env"
         The env file name.
         Used as a parameter for dotenv.dotenv_values method.
 
