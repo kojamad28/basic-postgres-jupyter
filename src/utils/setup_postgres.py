@@ -7,14 +7,14 @@ from sqlalchemy.engine import Engine
 
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
-def create_postgres_engine(env_file: str = f"{BASE_DIR}/db/.env") -> Engine:
+def create_postgres_engine(dotenv_path: str = f"{BASE_DIR}/db/.env") -> Engine:
     """
     Create sqlalchemy.engine.Engine for PostgreSQL database.
 
     Parameters
     ----------
-    env_file : str, default f"{BASE_DIR}/db/.env"
-        The env file name.
+    dotenv_path : str, default f"{BASE_DIR}/db/.env"
+        The path for dotenv file.
         Used as a parameter for dotenv.dotenv_values method.
 
     returns
@@ -22,7 +22,7 @@ def create_postgres_engine(env_file: str = f"{BASE_DIR}/db/.env") -> Engine:
     engine : sqlalchemy.engine.Engine
     """
 
-    config: dict = dotenv_values(env_file)
+    config: dict = dotenv_values(dotenv_path)
 
     url_object: URL = URL.create(
         "postgresql+psycopg",
