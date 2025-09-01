@@ -5,7 +5,7 @@ from sqlalchemy import URL, create_engine
 from sqlalchemy.engine import Engine
 
 
-BASE_DIR = Path(__file__).resolve().parent.parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 def create_postgres_engine(dotenv_path: str = BASE_DIR / "db" / ".env") -> Engine:
     """
