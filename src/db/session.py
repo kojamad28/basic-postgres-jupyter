@@ -8,13 +8,13 @@ from sqlalchemy.orm import sessionmaker, Session
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-def get_engine(dotenv_path: str = BASE_DIR / "db" / ".env") -> Engine:
+def get_engine(dotenv_path: Path = BASE_DIR / "db" / ".env") -> Engine:
     """
     Create sqlalchemy.engine.Engine for PostgreSQL database.
 
     Parameters
     ----------
-    dotenv_path : str, default BASE_DIR / "db" / ".env"
+    dotenv_path : Path, default BASE_DIR / "db" / ".env"
         The path for dotenv file.
         Used as a parameter for dotenv.dotenv_values method.
 
@@ -39,13 +39,13 @@ def get_engine(dotenv_path: str = BASE_DIR / "db" / ".env") -> Engine:
     return engine
 
 
-def get_sessionlocal(dotenv_path: str) -> Session:
+def get_sessionlocal(dotenv_path: Path) -> Session:
     """
     Create sqlalchemy.orm.Session for PostgreSQL database.
 
     Parameters
     ----------
-    dotenv_path : str, default BASE_DIR / "db" / ".env"
+    dotenv_path : Path, default BASE_DIR / "db" / ".env"
         The path for dotenv file.
         Used as a parameter for dotenv.dotenv_values method.
 
