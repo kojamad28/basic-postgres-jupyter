@@ -5,7 +5,7 @@ services:
     environment:
       - TZ=Asia/Tokyo
     env_file:
-      - ./src/db/.env
+      - ./src/db/.env.dev
     ports:
       - "5432:5432"
     volumes:
@@ -15,7 +15,7 @@ services:
       context: .
       args:
         REQ_DIR: "requirements"
-        REQ_TXT: "prod.txt"
+        REQ_TXT: "dev.txt"
     image: kojamad28/basic-postgres-jupyter
     container_name: jupyterlab
     command: jupyter lab --ip=0.0.0.0 --allow-root --LabApp.token=''

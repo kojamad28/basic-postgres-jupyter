@@ -1,0 +1,7 @@
+-r common.txt
+black
+ruff
+mypy
+tox
+pytest
+pytest-structlog

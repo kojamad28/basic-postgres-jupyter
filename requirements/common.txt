@@ -1,0 +1,7 @@
+structlog
+python-dotenv
+psycopg
+sqlalchemy
+sqlacodegen
+pandas[performance]
+jupyterlab
