@@ -5,3 +5,4 @@ mypy
 tox
 pytest
 pytest-structlog
+sphinx
